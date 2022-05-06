@@ -1,0 +1,47 @@
+/*
+Given a positive integer n, generate an n x n matrix filled with elements from 1 to n2 in spiral order.
+1->2->3
+      |
+8->9->4
+|     |
+7<-6<-5
+
+*/
+
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        vector<vector<int>> mat(n,vector<int> (n));
+        int curr_val=1;
+        int left=0, top=0, right=n-1, bottom =n-1;
+        
+        while(left<=right and top<=bottom)
+        {
+            for(int i = left; i<=right;i++)
+            {
+                mat[top][i]=curr_val;
+                curr_val++;
+            }
+            top++;
+            for(int i = top;i<=bottom;i++)
+            {
+                mat[i][right]=curr_val;
+                curr_val++;
+            }
+            right--;
+            for(int i = right;i>=left;i--)
+            {
+                mat[bottom][i]=curr_val;
+                curr_val++; 
+            }
+            bottom--;
+            for(int i = bottom;i>=top;i--)
+            {
+                mat[i][left]=curr_val;
+                curr_val++;
+            }
+            left++;
+        }
+        return mat;
+    }
+};
