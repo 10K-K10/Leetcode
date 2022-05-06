@@ -1,0 +1,21 @@
+/*
+
+Return true if there exists a triple of indices (i, j, k) such that i < j < k and nums[i] < nums[j] < nums[k]
+
+*/
+
+class Solution {
+public:
+    bool increasingTriplet(vector<int>& nums) {
+        int n = nums.size();
+        if(n<3) return false;
+        int firstnum = INT_MAX, secondnum = INT_MAX;
+        for(auto curr_num:nums){
+            if(curr_num<=firstnum)  firstnum=curr_num;
+            else if(curr_num<=secondnum)    secondnum=curr_num;
+            else
+                return true;
+        }
+        return false;
+    }
+};
