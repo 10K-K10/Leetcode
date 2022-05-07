@@ -1,0 +1,29 @@
+/*
+Given a string s which consists of lowercase or uppercase letters, return the length of the longest palindrome that can be built with those letters.
+
+*/
+
+
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        unordered_map<int, int> mp;
+        int len=0;
+        for(char ch:s)  {
+            mp[ch]++;
+            if(mp[ch]%2==0){
+                len+=2;
+                mp[ch]=0;
+            }
+        }
+        for(auto info:mp)
+        {
+            if(info.second==1)
+            {
+                len+=1;
+                break;
+            }
+        }
+        return len;
+    }
+};
