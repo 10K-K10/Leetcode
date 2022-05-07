@@ -1,0 +1,30 @@
+/*
+Return true if there is a 132 pattern in nums, otherwise, return false.
+
+*/
+
+class Solution {
+public:
+    bool find132pattern(vector<int>& nums) {
+        int n = nums.size();
+        multiset<int> st(nums.begin(),nums.end());
+        
+        int mini=nums[0];
+        st.erase(st.find(nums[0]));
+        for(int i = 1;i<n-1;i++)
+        {
+            st.erase(st.find(nums[i]));
+            if(nums[i]>mini)
+            {
+                auto it=st.upper_bound(mini);
+                if(it!=st.end() and (*it)<nums[i])
+                {
+                    return true;
+                }
+            }
+            mini=min(mini,nums[i]);
+        }
+        
+        return false;
+    }
+};
