@@ -95,7 +95,7 @@ public:
 };
 
 
-// ---> Using Single Queue  (Most Efficient)
+// ---> Method 3->Using Single Queue  (Most Efficient)
 
 class MyStack {
 public:
